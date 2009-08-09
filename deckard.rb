@@ -17,3 +17,8 @@ module Deckard
     @session ||= GoogleSpreadsheet.login(config['email'],config['password'])
   end
 end
+
+%w{card.rb deck.rb}.each do |file|
+  path = File.join($DIR,file)
+  load(path) if File.exists? path
+end
